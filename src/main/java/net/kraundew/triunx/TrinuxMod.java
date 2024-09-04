@@ -1,7 +1,10 @@
-package net.kraundew.trinux;
+package net.kraundew.triunx;
 
 import com.mojang.logging.LogUtils;
+import net.kraundew.triunx.item.ItemsMod;
+import net.kraundew.triunx.item.ModCreativeModTabs;
 import net.minecraft.client.Minecraft;
+import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -18,13 +21,15 @@ import org.slf4j.Logger;
 
 @Mod(TrinuxMod.MOD_ID)
 public class TrinuxMod {
-    public static final String MOD_ID = "trinuxmodbykraundew";
+    public static final String MOD_ID = "triunx";
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
     public TrinuxMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-
+        //Register Items, Tabs, Armor, ETC.
+        ModCreativeModTabs.register(modEventBus);
+        ItemsMod.register(modEventBus);
 
         modEventBus.addListener(this::commonSetup);
 
@@ -40,7 +45,6 @@ public class TrinuxMod {
     }
 
     private void addCreative(BuildCreativeModeTabContentsEvent event) {
-
     }
 
     @SubscribeEvent

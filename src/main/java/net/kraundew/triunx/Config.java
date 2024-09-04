@@ -1,4 +1,4 @@
-package net.kraundew.trinux;
+package net.kraundew.triunx;
 
 import net.minecraft.resources.ResourceLocation;
 import net.minecraft.world.item.Item;
