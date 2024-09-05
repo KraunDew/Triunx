@@ -1,10 +1,10 @@
 package net.kraundew.triunx;
 
 import com.mojang.logging.LogUtils;
+import net.kraundew.triunx.block.ModBlocks;
 import net.kraundew.triunx.item.ItemsMod;
 import net.kraundew.triunx.item.ModCreativeModTabs;
 import net.minecraft.client.Minecraft;
-import net.minecraft.world.item.CreativeModeTabs;
 import net.minecraftforge.api.distmarker.Dist;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.BuildCreativeModeTabContentsEvent;
@@ -19,18 +19,22 @@ import net.minecraftforge.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.minecraftforge.fml.javafmlmod.FMLJavaModLoadingContext;
 import org.slf4j.Logger;
 
-@Mod(TrinuxMod.MOD_ID)
-public class TrinuxMod {
+@Mod(net.kraundew.triunx.TriunxMod.MOD_ID)
+public class TriunxMod {
     public static final String MOD_ID = "triunx";
 
     private static final Logger LOGGER = LogUtils.getLogger();
 
-    public TrinuxMod() {
+    public TriunxMod() {
         IEventBus modEventBus = FMLJavaModLoadingContext.get().getModEventBus();
-        //Register Items, Tabs, Armor, ETC.
-        ModCreativeModTabs.register(modEventBus);
-        ItemsMod.register(modEventBus);
 
+        //Register Items, Blocks, Tabs, Armor, ETC.
+        ModCreativeModTabs.register(modEventBus);
+
+        ItemsMod.register(modEventBus);
+        ModBlocks.register(modEventBus);
+
+        //Esto ya estaba XD
         modEventBus.addListener(this::commonSetup);
 
         MinecraftForge.EVENT_BUS.register(this);
